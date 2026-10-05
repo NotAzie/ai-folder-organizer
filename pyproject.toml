@@ -1,0 +1,89 @@
+[project]
+name = "ai-folder-organizer"
+version = "1.0.0"
+description = "AI-powered folder organization tool with interactive GUI and CLI. Scans directories, uses LLM to suggest reorganization, and safely executes file moves with rollback support."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [
+    { name = "Mazziula", email = "your-email@example.com" }
+]
+keywords = [
+    "folder organizer",
+    "file organizer",
+    "AI",
+    "LLM",
+    "directory management",
+    "file management",
+    "tkinter",
+    "GUI",
+    "automation",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: X11 Applications",
+    "Environment :: Win32 (MS Windows)",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Desktop Environment",
+    "Topic :: File Management",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+requires-python = ">=3.8"
+dependencies = [
+    "requests>=2.28.0",
+    "tqdm>=4.65.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "ruff>=0.1.0",
+    "black>=23.0",
+]
+
+[project.scripts]
+ai-folder-organizer = "organiser.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/NotAzie/ai-folder-organizer"
+Documentation = "https://github.com/NotAzie/ai-folder-organizer#readme"
+Source = "https://github.com/NotAzie/ai-folder-organizer"
+Issues = "https://github.com/NotAzie/ai-folder-organizer/issues"
+
+[tool.ruff]
+line-length = 100
+target-version = "py38"
+
+[tool.ruff.lint]
+ignore = [
+    "BLE001",  # Do not catch blind exception (we handle this intentionally in file operations)
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--strict-markers --tb=short"
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+]
+
+[tool.coverage.run]
+source = ["organiser"]
+branch = true
+omit = [
+    "tests/*",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if __name__ == .__main__.:",
+]
