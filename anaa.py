@@ -14,7 +14,7 @@ import re
 
 # ========================= CONFIG =========================
 API_URL = "https://apifreellm.com/api/v1/chat"
-API_KEY = "apf_n6awvska4zpvz6cck3pway67"  # Your ApiFreeLLM key
+API_KEY = None  # Must be set via environment variable  # Your ApiFreeLLM key
 LOG_FILE = "organizer_log.json"
 ROLLBACK_MANIFEST = "organizer_rollback_manifest.json"
 RATE_LIMIT_SECONDS = 6  # free tier: 1 request every 5 seconds
